@@ -1,0 +1,19 @@
+{
+  "name": "Hanzi Grader & Meme Editor",
+  "short_name": "Hanzi Grader",
+  "description": "Chinese character mnemonic grader and editor",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f4f0",
+  "theme_color": "#245c37",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
