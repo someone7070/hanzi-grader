@@ -103,7 +103,7 @@ function scoreCard(d){
  // Dictionary definitions are recognized as complete phrases immediately before
  // their annotated Hanzi component, including multiword definitions.
  const dictionaryGlosses=[];
- for(const match of core.matchAll(/(\\p{Script=Han})/gu)){
+ for(const match of core.matchAll(/(\p{Script=Han})/gu)){
    const definition=componentDefinitions[match[1]];
    if(!definition)continue;
    const prefix=core.slice(0,match.index).toLowerCase();
@@ -111,8 +111,7 @@ function scoreCard(d){
    for(const phrase of alternatives){
      const words=(phrase.toLowerCase().match(/[a-zà-ÿ]+/g)||[]);
      if(!words.length)continue;
-     const escaped=words.map(w=>w.replace(/[.*+?^$()|[\\]{}]/g,'\\$&')).join('\\s+');
-     const regex=new RegExp('(?:^|[^a-zà-ÿ])('+escaped+')\\s*$','i');
+     const regex=new RegExp('(?:^|[^a-zà-ÿ])('+words.join('\\s+')+')\\s*$','i');
      if(regex.test(prefix)){
        words.forEach(w=>componentWords.add(w));
        dictionaryGlosses.push(phrase);
