@@ -103,7 +103,7 @@ function scoreCard(d){
  // A compound component may have a two-word gloss, e.g. "dog meat 肰".
  // Only exempt the preceding word when the annotated glyph itself has
  // a compound decomposition; do not globally exempt either word.
- const compoundGloss=/([A-Za-zÀ-ÿ]+)[ \\t]+([A-Za-zÀ-ÿ]+)\\s*(\\p{Script=Han})/gu;
+ const compoundGloss=/([A-Za-zÀ-ÿ]+)[ \t]+([A-Za-zÀ-ÿ]+)\s*(\p{Script=Han})/gu;
  for(const hit of core.matchAll(compoundGloss)){
    const obj=decompositionDB[hit[3]];
    if(obj?.decomposition && IDS_ARITY[Array.from(obj.decomposition)[0]]){
