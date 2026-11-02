@@ -1,0 +1,65 @@
+{
+  "description": "Regression cases verified against v027 scoring function and bundled IDS data.",
+  "cases": [
+    {
+      "hanzi": "所",
+      "mnemonic": "An axe 斤 beside the door 戶 in this place 所 (suǒ).",
+      "expectedSpatialBonus": 1
+    },
+    {
+      "hanzi": "所",
+      "mnemonic": "An axe 斤 above the door 戶.",
+      "expectedSpatialBonus": 0
+    },
+    {
+      "hanzi": "好",
+      "mnemonic": "A woman 女 next to a child 子.",
+      "expectedSpatialBonus": 1
+    },
+    {
+      "hanzi": "好",
+      "mnemonic": "A woman 女 below a child 子.",
+      "expectedSpatialBonus": 0
+    },
+    {
+      "hanzi": "明",
+      "mnemonic": "The sun 日 alongside the moon 月.",
+      "expectedSpatialBonus": 1
+    },
+    {
+      "hanzi": "苗",
+      "mnemonic": "Grass 艹 above the field 田.",
+      "expectedSpatialBonus": 1
+    },
+    {
+      "hanzi": "苗",
+      "mnemonic": "Grass 艹 beside the field 田.",
+      "expectedSpatialBonus": 0
+    },
+    {
+      "hanzi": "苗",
+      "mnemonic": "The field 田 above the grass 艹.",
+      "expectedSpatialBonus": 0
+    },
+    {
+      "hanzi": "苗",
+      "mnemonic": "The field 田 below the grass 艹.",
+      "expectedSpatialBonus": 1
+    },
+    {
+      "hanzi": "行",
+      "mnemonic": "Steps 彳 beside steps 亍.",
+      "expectedSpatialBonus": 1
+    },
+    {
+      "hanzi": "行",
+      "mnemonic": "Steps 彳 beneath steps 亍.",
+      "expectedSpatialBonus": 0
+    },
+    {
+      "hanzi": "所",
+      "mnemonic": "An axe 斤 beside and next to the door 戶.",
+      "expectedSpatialBonus": 1
+    }
+  ]
+}
