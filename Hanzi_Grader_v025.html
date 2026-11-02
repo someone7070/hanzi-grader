@@ -22,8 +22,8 @@ function detectSpatial(d,core){
  const target=Array.from((d.hanzi||'').replace(/<[^>]*>/g,''))[0];
  if(target==='所'){
    const normalized=core.replace(/[戸户]/g,'戶');
-   if(/斤[^。.!?\\n]*\\b(?:beside|alongside|next to|adjacent to)\\b[^。.!?\\n]*戶/i.test(normalized)||
-      /戶[^。.!?\\n]*\\b(?:beside|alongside|next to|adjacent to)\\b[^。.!?\\n]*斤/i.test(normalized))return 1;
+   const relation='(?:beside|alongside|next to|adjacent to)';
+   if(new RegExp('斤.*'+relation+'.*戶|戶.*'+relation+'.*斤','i').test(normalized))return 1;
  }
  const obj=decompositionDB[target];
  if(!obj?.decomposition)return 0;
