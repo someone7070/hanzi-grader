@@ -40,6 +40,7 @@ function detectSpatial(d,core){
      start=at+leaf.char.length;
    }
  }
+ mentions.sort((a,b)=>a.pos-b.pos);
  // Compare geometry at the first diverging IDS branch.
  function relation(x,y){
    let k=0;
