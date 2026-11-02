@@ -33,10 +33,10 @@ function detectSpatial(d,core){
  }
  walk(root);
  const mentions=[];
- for(const leaf of leaves){
+ for(const [leafId,leaf] of leaves.entries()){
    let start=0,at;
    while((at=norm.indexOf(leaf.char,start))>=0){
-     mentions.push({char:leaf.char,pos:at,end:at+leaf.char.length,path:leaf.path});
+     mentions.push({leafId,char:leaf.char,pos:at,end:at+leaf.char.length,path:leaf.path});
      start=at+leaf.char.length;
    }
  }
@@ -60,19 +60,18 @@ function detectSpatial(d,core){
    outside:/\b(?:around|surrounds|encloses|outside|contains)\b/i,
    inside:/\b(?:inside|within|enclosed by)\b/i
  };
- // A relationship must occur between two explicitly mentioned components.
- // One qualifying phrase scores once, regardless of synonym repetition.
+ // Award one point for each independently verified component pair, not each synonym.
+ const matched=new Set();
  for(let i=0;i<mentions.length;i++)for(let j=i+1;j<mentions.length;j++){
    const x=mentions[i],y=mentions[j];
-   if(x.char===y.char)continue;
+   if(x.leafId===y.leafId||x.char===y.char)continue;
    const between=norm.slice(x.end,y.pos);
    const rel=relation(x,y);
-   if(rel&&patterns[rel]?.test(between))return 1;
-   // Above/below/inside/outside invert when component mention order reverses.
-   const reverse=relation(y,x);
-   if(reverse&&patterns[reverse]?.test(between))return 1;
+   if(rel&&patterns[rel]?.test(between)){
+     matched.add([Math.min(x.leafId,y.leafId),Math.max(x.leafId,y.leafId)].join(':'));
+   }
  }
- return 0;
+ return matched.size;
 }
 function scoreCard(d){
  const m=(d.mnemonic||"").replace(/<br\s*\/?>/gi," ");
