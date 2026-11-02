@@ -54,11 +54,11 @@ function detectSpatial(d,core){
    return null;
  }
  const patterns={
-   side:/\\b(?:beside|alongside|next to|adjacent to)\\b/i,
-   above:/\\b(?:above|over|atop|on top of)\\b/i,
-   below:/\\b(?:below|under|beneath|underneath)\\b/i,
-   outside:/\\b(?:around|surrounds|encloses|outside|contains)\\b/i,
-   inside:/\\b(?:inside|within|enclosed by)\\b/i
+   side:/\b(?:beside|alongside|next to|adjacent to)\b/i,
+   above:/\b(?:above|over|atop|on top of)\b/i,
+   below:/\b(?:below|under|beneath|underneath)\b/i,
+   outside:/\b(?:around|surrounds|encloses|outside|contains)\b/i,
+   inside:/\b(?:inside|within|enclosed by)\b/i
  };
  // A relationship must occur between two explicitly mentioned components.
  // One qualifying phrase scores once, regardless of synonym repetition.
